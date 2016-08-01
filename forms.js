@@ -1,3 +1,12 @@
+
+var employeeArray = [];
+var totalSalary = 0;
+var monthlyCost = 0;
+
+function RemoveHTML(id) {
+  $('#' + id).remove()
+}
+
 $(document).ready(function() {
     var array = [];
     $('#employeeinfo').on('submit', function(event) {
@@ -23,9 +32,6 @@ $(document).ready(function() {
       appendDom(values);
     });
 
-    var totalSalary = 0;
-    var monthlyCost = 0;
-
     function appendDom(values) {
       var lastName = values["employeelastname"]
       var firstName = values["employeefirstname"]
@@ -38,11 +44,15 @@ $(document).ready(function() {
       totalSalary += income;
       monthlyCost = Math.round(totalSalary / 12);
 
+      var e = Employee(firstName, lastName, jobTitle, salary, id)
+      employeeArray.push(e)
+
       $('#container').append('<div></div>');
+      $('#container').children().last().attr('id', id);
       var $el = $('#container').children().last();
       $el.append('<p>' + firstName + ' ' + lastName + '</p>');
       var $el = $('#container').children().last();
-      $el.append('<p>' + "Tile:" + jobTitle + '</p>');
+      $el.append('<p>' + "Title:" + jobTitle + '</p>');
       var $el = $('#container').children().last();
       $el.append('<p>' + "ID:" + id + '</p>');
       var $el = $('#container').children().last();
@@ -51,6 +61,15 @@ $(document).ready(function() {
       $el.append('<p>' + "Total salary: $" + totalSalary + '</p>');
       var $el = $('#container').children().last();
       $el.append('<p>' + "Monthly salary cost: $" + monthlyCost + '</p>');
+      var $el = $('#container').children().last();
+      $el.append('<button onClick="RemoveHTML(' + id + ')">Delete</button>');
     }
-
 });
+
+function Employee(first, last, title, salary, id) {
+  this.first = first
+  this.last = last
+  this.title = title
+  this.salary = salary
+  this.id
+}
