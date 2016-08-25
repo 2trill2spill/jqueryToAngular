@@ -2,33 +2,40 @@
 <html>
   <head>
       <title>jQuery Forms</title>
-      <script type="text/javascript" src="vendor/jquery-3.0.0.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
       <script type="text/javascript" src="forms.js"></script>
       <link rel="stylesheet" href="form-style.css" />
   </head>
-  <body>
+  <body ng-app="app">
     <h1>Employee Form</h1>
-    <div>
+    <div ng-controller="formController">
       <form id="employeeinfo">
         <label for="employeefirstname">First Name</label>
-        <input type="text" id="employeefirstname" name="employeefirstname" />
+        <input ng-model="firstName" type="text" id="employeefirstname" name="employeefirstname" />
 
         <label for="employeelastname">Last Name</label>
-        <input type="text" id="employeelastname" name="employeelastname" />
+        <input ng-model="lastName" type="text" id="employeelastname" name="employeelastname" />
 
         <label for="id">ID</label>
-        <input type="text" id="id" name="id" />
+        <input type="text" ng-model="id" id="id" name="id" />
 
         <label for="jobTitle">Job Title</label>
-        <input type="text" id="jobTitle" name="jobTitle" />
+        <input ng-model="title" type="text" id="jobTitle" name="jobTitle" />
 
         <label for="salary">Salary</label>
-        <input type="text" id="salary" name="salary" />
+        <input ng-model="salary" type="text" id="salary" name="salary" />
 
-        <input type="submit" value="Submit Employee" />
+        <input type="button" value="Submit Employee" ng-click="handleSubmit()" />
       </form>
-    </div>
-    <div id="container">
+      <div>
+        <div ng-repeat="employee in employeeArray">
+          <p>{{employee.first}}</p>
+          <p>{{employee.last}}</p>
+          <p>{{employee.title}}</p>
+          <p>{{employee.salary}}</p>
+          <p>{{employee.id}}</p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
