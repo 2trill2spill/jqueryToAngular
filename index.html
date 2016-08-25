@@ -29,11 +29,12 @@
       </form>
       <div>
         <div ng-repeat="employee in employeeArray">
-          <p>{{employee.first}}</p>
-          <p>{{employee.last}}</p>
-          <p>{{employee.title}}</p>
-          <p>{{employee.salary}}</p>
-          <p>{{employee.id}}</p>
+          <p>Name: {{employee.first}} {{employee.last}}</p>
+          <p>Title: {{employee.title}}</p>
+          <p>Salary: {{employee.salary}}</p>
+          <p>ID: {{employee.id}}</p>
+          <p> Monthly salary cost: ${{monthlyCost}} </p>
+          <p> Total salary: ${{totalSalary}} </p>
         </div>
       </div>
     </div>

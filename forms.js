@@ -1,4 +1,6 @@
 var employeeArray = [];
+var totalSalary = 0;
+var monthlyCost = 0;
 
 var app = angular.module("app", []);
 
@@ -15,6 +17,7 @@ app.controller("formController", ["$scope", function($scope) {
     employeeArray.push(employee);
     $scope.employeeArray = employeeArray;
     clearInputs();
+    calculateSalaries(salary)
   }
 
   function clearInputs() {
@@ -23,6 +26,14 @@ app.controller("formController", ["$scope", function($scope) {
     $scope.title = "";
     $scope.salary = "";
     $scope.id = "";
+  }
+
+  function calculateSalaries(salary) {
+    var pay = parseFloat(salary);
+    totalSalary += pay;
+    monthlyCost = totalSalary / 12;
+    $scope.totalSalary = totalSalary;
+    $scope.monthlyCost = monthlyCost;
   }
 }]);
 
